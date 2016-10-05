@@ -1,5 +1,4 @@
-# coding: utf8
-"""
+﻿"""
 
     Use Markov chains to generate random text that sounds Japanese.
     This makes random pronounceable passwords that are both strong and easy
@@ -17,8 +16,9 @@
 from __future__ import division
 import string
 import itertools
-import random
+from random import SystemRandom
 from collections import defaultdict
+random = SystemRandom()
 
 
 # This is a romanization of the opening of "Genji Monogatari"
@@ -156,7 +156,10 @@ def main():
     chain = MarkovChain(
         c for c in japanese.lower() if c in string.ascii_lowercase
     )
-    print ''.join(itertools.islice(chain, 14))
+    pass_len = 20
+    pass_count = 40
+    for i in range(pass_count):
+        print ''.join(itertools.islice(chain, pass_len))
 
 if __name__ == '__main__':
     main()
